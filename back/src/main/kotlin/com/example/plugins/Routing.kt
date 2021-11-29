@@ -27,7 +27,13 @@ fun Application.configureRouting() {
 fun Routing.admin() {
 
     route("/admin"){
+
         adminTest()
+
+        // move CRUD
+        addMovie()
+        deleteMovie()
+        modifyMovie()
     }
 }
 
@@ -35,8 +41,9 @@ fun Routing.customer() {
 
     route("/customer"){
 
-        // for ticketing
         customerTest()
+
+        // for ticketing
         getMovieList()
         getTheaterList()
         getScheduleList()
@@ -49,3 +56,12 @@ fun Routing.customer() {
         deleteTicket()
     }
 }
+
+// for login
+/*fun Routing.User() {
+
+    route("/user"){
+
+
+    }
+}*/
