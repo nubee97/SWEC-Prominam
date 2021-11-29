@@ -8,6 +8,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 import org.jetbrains.exposed.sql.vendors.currentDialect
 
+2021-12-06T00:00:00.000+09:00
+DateTimeFormatter dtf = DateTimeFormatter.forPattern("yyyy-MM-ddTHH:mm:ss")
+
 fun initDB() {
     val url = "jdbc:mysql://1.238.89.68:3306/cinema"
     val driver = "com.mysql.jdbc.Driver"
@@ -32,10 +35,10 @@ object db_movie: Table("MOVIE") {
 
 data class person(
     val personId: Int,
-    val id = String,
-    val pw = String,
-    val email = String,
-    val phoneNumber = String
+    val id: String,
+    val pw: String,
+    val email: String,
+    val phoneNumber: String
 )
 
 object db_person: Table("PERSON"){

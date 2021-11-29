@@ -41,6 +41,7 @@ fun Routing.customer() {
         getTheaterList()
         getScheduleList()
         getSeatList()
+        checkSeatAvailable()
         addTicket()
 
         // for cancel ticket
