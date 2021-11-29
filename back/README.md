@@ -1,2 +1,2 @@
-build project `./gradlew build'
+build project `./gradlew build'   
 run project './gradlew run'
