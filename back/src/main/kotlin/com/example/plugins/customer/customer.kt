@@ -14,8 +14,9 @@ import org.jetbrains.exposed.sql.jodatime.datetime
 import org.jetbrains.exposed.sql.jodatime.date
 import org.jetbrains.exposed.sql.transactions.transaction
 
+import org.joda.time.DateTime
+
 import com.example.DBconfig.*
-import com.example.DBconfig.dtf
 
 fun Route.customerTest() {
     get("/test") {
@@ -84,7 +85,7 @@ fun Route.getSeatList() {
     get("/get/seat/{theater}/{screen}") {
         var res: String = ""
         transaction {
-            var ans = ArrayList<schedule>()
+            var ans = ArrayList<seatinfo>()
             db_seatinfo.select {
                 (db_seatinfo.theaterName.eq(call.parameters["theater"].toString())) and
                 (db_seatinfo.screenName.eq(call.parameters["screen"].toString()))
@@ -111,7 +112,7 @@ fun Route.checkSeatAvailable() {
                 (db_ticket.movieTitle.eq(call.parameters["movieTitle"].toString())) and
                 (db_ticket.theaterName.eq(call.parameters["theaterName"].toString())) and
                 (db_ticket.screenName.eq(call.parameters["screenName"].toString())) and
-                (db_ticket.startTime.eq(call.parameters["startTime"].toString()))
+                (db_ticket.startTime eq DateTime(call.parameters["startTime"]))
             }.forEach {
                 ans.add(seatinfo(
                     theaterName = it[db_ticket.theaterName],
@@ -134,12 +135,12 @@ fun Route.addTicket() {
                 it[movieTitle] = call.parameters["movieTitle"].toString()
                 it[theaterName] = call.parameters["theaterName"].toString()
                 it[screenName] = call.parameters["screenName"].toString()
-                it[startTime] = call.parameters["startTime"].toString()
-                it[endTime] = call.parameters["endTime"].toString()
+                it[startTime] = DateTime(call.parameters["startTime"])
+                it[endTime] = DateTime(call.parameters["endTime"])
                 it[seatrow] = call.parameters["seatrow"].toString()
                 it[seatcol] = call.parameters["seatcol"].toString()
                 it[price] = call.parameters["price"].toString().toInt()
-                it[purchaseDate] = call.parameters["purchaseDate"].toString()
+                it[purchaseDate] = DateTime(call.parameters["purchaseDate"])
             }
         }
     }
@@ -151,7 +152,7 @@ fun Route.getTicketList() {
         transaction {
             var ans = ArrayList<ticket>()
             db_ticket.select {
-                (db_ticket.personId.eq(call.parameters["personId"]))
+                db_ticket.personId eq call.parameters["personId"].toString().toInt()
             }.forEach {
                 ans.add(ticket(
                     ticketId = it[db_ticket.ticketId],
@@ -159,12 +160,12 @@ fun Route.getTicketList() {
                     movieTitle = it[db_ticket.movieTitle],
                     theaterName = it[db_ticket.theaterName],
                     screenName = it[db_ticket.screenName],
-                    startTime = dtf.parseDateTime(it[db_ticket.startTime]),
-                    endTime = dtf.parseDateTime(it[db_ticket.endTime]),
+                    startTime = it[db_ticket.startTime].toString(),
+                    endTime = it[db_ticket.endTime].toString(),
                     seatrow = it[db_ticket.seatrow],
                     seatcol = it[db_ticket.seatcol],
                     price = it[db_ticket.price],
-                    purchaseDate = dtf.parseDateTime(it[db_ticket.purchaseDate])
+                    purchaseDate = it[db_ticket.purchaseDate].toString()
                 ))
             }
         }
@@ -175,7 +176,7 @@ fun Route.deleteTicket(){
     get("/delete/ticket/{ticketId}") {
         transaction {
             db_ticket.deleteWhere{
-                db_ticket.ticketId == call.parameters["ticketId"].toString().toInt()
+                db_ticket.ticketId eq call.parameters["ticketId"].toString().toInt()
             }
         }
         call.respondText("delete ticket")
