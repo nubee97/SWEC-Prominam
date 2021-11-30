@@ -1,0 +1,27 @@
+/* HEADER */
+header {
+  width: 100%;
+}
+
+header .menu ul.menu-list {
+  position: absolute;
+  top: 65px;
+  right: 0;
+  display: flex;
+}
+
+header .menu ul.menu-list li {
+  position: relative;
+}
+
+header .menu ul.menu-list li a {
+  font-size: 12px;
+  padding: 11px 16px;
+  display: block;
+  color: white;
+  font-weight: 600;
+}
+
+header .menu ul.menu-list li a:hover {
+  color: #777;
+}

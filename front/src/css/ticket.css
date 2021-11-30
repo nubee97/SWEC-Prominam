@@ -1,0 +1,23 @@
+.inner .ticket-info {
+  display: flex;
+  margin: 10px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+}
+
+.inner.ticket-info ul {
+  display: inline-block;
+}
+
+.inner .ticket-info ul li {
+  width: 450px;
+  height: 130px;
+  font-size: 28px;
+  padding: 5px;
+  flex-direction: row;
+  align-items: center;
+}
+
+span {
+  color: #777;
+}

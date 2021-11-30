@@ -1,0 +1,66 @@
+/* SEAT */
+.inner {
+  width: 1500px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.box-office {
+}
+
+.box-office .name {
+  margin: 30px;
+}
+
+.box-office .name .SCREEN {
+  margin-top: 10px;
+  background-color: #777;
+}
+
+.box-office .select_seat {
+  display: flex;
+}
+
+.box-office .select_seat .seat-alpha {
+}
+
+.box-office .select_seat .seat-alpha ul {
+}
+
+.box-office .select_seat .seat-alpha li {
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 5.5px;
+  text-align: center;
+}
+
+.box-office .select_seat .seat-number {
+}
+
+.box-office .select_seat .seat-number ul {
+  display: flex;
+}
+
+.box-office .select_seat .seat-number ul a.seat-box {
+  margin: 3px;
+}
+
+.box-office .select_seat .seat-number ul a.seat-box li {
+}
+
+.box-office .seat-number a {
+  width: 60px;
+  height: 60px;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 5px 0;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+}
+
+.box-office .seat-number a:hover {
+  background-color: beige;
+}

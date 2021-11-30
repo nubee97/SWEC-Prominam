@@ -1,0 +1,22 @@
+/* MOVIES */
+.box-office {
+  position: relative;
+}
+
+.box-office .swiper-container {
+  width: calc(300px * 5 + 60px);
+  position: relative;
+  top: 50px;
+  left: 50%;
+  margin-left: calc((300px * 5 + 60px) / -2);
+}
+
+.box-office .name h1 {
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+}
+
+img {
+  cursor: pointer;
+}
