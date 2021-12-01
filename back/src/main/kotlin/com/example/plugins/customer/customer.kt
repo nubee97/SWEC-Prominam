@@ -15,7 +15,6 @@ import org.jetbrains.exposed.sql.jodatime.date
 import org.jetbrains.exposed.sql.transactions.transaction
 
 import org.joda.time.DateTime
-
 import com.example.DBconfig.*
 
 fun Route.customerTest() {
@@ -93,8 +92,7 @@ fun Route.getSeatList() {
                 ans.add(seatinfo(
                     theaterName = it[db_seatinfo.theaterName],
                     screenName = it[db_seatinfo.screenName],
-                    seatrow = it[db_seatinfo.seatrow],
-                    seatcol = it[db_seatinfo.seatcol]
+                    seat = it[db_seatinfo.seat]
                 ))
             }
             res = Gson().toJson(ans)
@@ -117,8 +115,7 @@ fun Route.checkSeatAvailable() {
                 ans.add(seatinfo(
                     theaterName = it[db_ticket.theaterName],
                     screenName = it[db_ticket.screenName],
-                    seatrow = it[db_ticket.seatrow],
-                    seatcol = it[db_ticket.seatcol]
+                    seat = it[db_ticket.seat]
                 ))
             }
             res = Gson().toJson(ans)
@@ -128,7 +125,7 @@ fun Route.checkSeatAvailable() {
 }
 
 fun Route.addTicket() {
-    get("/add/ticket/{personId}/{movieTitle}/{theaterName}/{screenName}/{startTime}/{endTime}/{seatrow}/{seatcol}/{price}/{purchaseDate}") {
+    get("/add/ticket/{personId}/{movieTitle}/{theaterName}/{screenName}/{startTime}/{endTime}/{seat}/{price}/{purchaseDate}") {
         transaction {
             db_ticket.insert {
                 it[personId] = call.parameters["personId"].toString().toInt()
@@ -137,8 +134,7 @@ fun Route.addTicket() {
                 it[screenName] = call.parameters["screenName"].toString()
                 it[startTime] = DateTime(call.parameters["startTime"])
                 it[endTime] = DateTime(call.parameters["endTime"])
-                it[seatrow] = call.parameters["seatrow"].toString()
-                it[seatcol] = call.parameters["seatcol"].toString()
+                it[seat] = call.parameters["seat"].toString().toInt()
                 it[price] = call.parameters["price"].toString().toInt()
                 it[purchaseDate] = DateTime(call.parameters["purchaseDate"])
             }
@@ -162,13 +158,14 @@ fun Route.getTicketList() {
                     screenName = it[db_ticket.screenName],
                     startTime = it[db_ticket.startTime].toString(),
                     endTime = it[db_ticket.endTime].toString(),
-                    seatrow = it[db_ticket.seatrow],
-                    seatcol = it[db_ticket.seatcol],
+                    seat = it[db_ticket.seat],
                     price = it[db_ticket.price],
                     purchaseDate = it[db_ticket.purchaseDate].toString()
                 ))
             }
+            res = Gson().toJson(ans)
         }
+        call.respond(res)
     }
 }
 

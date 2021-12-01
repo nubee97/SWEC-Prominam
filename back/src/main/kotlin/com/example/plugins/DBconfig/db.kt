@@ -70,8 +70,7 @@ data class ticket(
     val screenName: String,
     val startTime: String,
     val endTime: String,
-    val seatrow: String,
-    val seatcol: String,
+    val seat: Int,
     val price: Int,
     val purchaseDate: String
 )
@@ -84,8 +83,7 @@ object db_ticket: Table("TICKET"){
     val screenName = varchar("screenName", length = 3)
     val startTime = datetime("startTime")
     val endTime = datetime("endTime")
-    val seatrow = varchar("seatrow", length = 2)
-    val seatcol = varchar("seatcol", length = 2)
+    val seat = integer("seat")
     val price = integer("price")
     val purchaseDate = datetime("purchaseDate")
 }
@@ -111,13 +109,11 @@ object db_screeningroom: Table("SCREENINGROOM"){
 data class seatinfo(
     val theaterName: String,
     val screenName: String,
-    val seatrow: String,
-    val seatcol: String
+    val seat: Int
 )
 
 object db_seatinfo: Table("SEATINFO"){
     val theaterName = varchar("theaterName", length = 30) // primary key
     val screenName = varchar("screenName", length = 3) // primary key
-    val seatrow = varchar("seatrow", length = 2) // primary key
-    val seatcol = varchar("seatcol", length = 2) // primary key
+    val seat = integer("seat") // primary key
 }

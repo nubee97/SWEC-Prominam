@@ -15,9 +15,6 @@ import org.jetbrains.exposed.sql.jodatime.date
 import org.jetbrains.exposed.sql.transactions.transaction
 
 import org.joda.time.DateTime
-
-import com.example.DBconfig.*
-
 import com.example.DBconfig.*
 
 fun Route.adminTest() {
@@ -37,6 +34,7 @@ fun Route.addMovie() {
                 it[moviePoster] = call.parameters["moviePoster"].toString()
             }
         }
+        call.respondText("add movie")
     }
 }
 
@@ -52,7 +50,17 @@ fun Route.deleteMovie() {
 }
 
 fun Route.modifyMovie() {
-    get("/modify/movie/") {
-        
+    get("/modify/movie/{currentTitle}/{updateTitle}/{releaseDate}/{runningTime}/{moviePoster}") {
+        transaction {
+            db_movie.update ({
+                db_movie.movieTitle eq call.parameters["currentTitle"].toString()
+            }) {
+                it[movieTitle] = call.parameters["updateTitle"].toString()
+                it[releaseDate] = DateTime(call.parameters["releaseDate"])
+                it[runningTime] = DateTime(call.parameters["runningTime"])
+                it[moviePoster] = call.parameters["moviePoster"].toString()
+            }
+        }
+        call.respondText("modify movie")
     }
 }

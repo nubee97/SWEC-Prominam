@@ -10,6 +10,7 @@ import io.ktor.request.*
 
 import com.example.plugins.admin.*
 import com.example.plugins.customer.*
+import com.example.plugins.user.*
 
 fun Application.configureRouting() {
 
@@ -30,7 +31,7 @@ fun Routing.admin() {
 
         adminTest()
 
-        // move CRUD
+        // movie CRUD
         addMovie()
         deleteMovie()
         modifyMovie()
@@ -58,10 +59,18 @@ fun Routing.customer() {
 }
 
 // for login
-/*fun Routing.User() {
+fun Routing.User() {
 
     route("/user"){
 
+        // sign in
+        getUserWithId()
 
+        // sign up
+        addUser()
+        checkIdAvailable()
+
+        deleteUser()
+        modifyUser()
     }
-}*/
+}
