@@ -1,0 +1,49 @@
+/* CINEMA */
+.box-office .select_cinema .cinema,
+.box-office .select_cinema .region {
+  display: flex;
+}
+
+.box-office .select_cinema .cinema li,
+.box-office .select_cinema .region li {
+  padding: 10px;
+  border-right: 3px solid white;
+  border-top: 3px solid white;
+}
+
+.box-office .select_cinema .cinema li:last-child,
+.box-office .select_cinema .region li:last-child {
+  border-right: none;
+}
+
+.box-office .select_cinema .cinema li a{
+  width: 498px;
+  height: 100px;
+  color: white;
+}
+
+.box-office .select_cinema .region li a{
+  width: 172.375px;
+  height: 75px;
+  color: white;
+  font-size: 28px;
+}
+
+.box-office .select_cinema .region li a:hover,
+.box-office .select_cinema .cinema-name li a:hover{
+  color: #777;
+}
+
+.box-office .select_cinema .cinema-name li a{
+  font-size: 22px;
+  color: white;
+  padding: 10px;
+}
+
+.box-office .select_cinema .cinema-name-box {
+  width: 100%;
+  height: 300px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  overflow-y: scroll;                                                   
+}

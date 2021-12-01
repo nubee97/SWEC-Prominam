@@ -1,0 +1,35 @@
+/* CINEMA */
+.box-office {
+}
+
+.box-office .name {
+}
+
+.box-office .select_cinema {
+  font-size: 64px;
+  display: flex;
+}
+
+.box-office > .inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-office .select_cinema a {
+  margin: 20px;
+  color: white;
+  display: block;
+  width: 400px;
+  height: 400px;
+  border: 3px solid white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-office .select_cinema a:hover {
+  color: #777;
+  border: 3px solid #777;
+}

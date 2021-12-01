@@ -1,0 +1,115 @@
+/* SCREEN */
+.box-office .select_screen {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 20px;
+  margin-top: 0;
+  width: 1500px;
+  height: 600px;
+}
+
+h1.title {
+  font-size: 28px;
+}
+
+.schdule {
+  font-size: 28px;
+}
+
+.reserve {
+  width: 200px;
+  height: 75px;
+  margin: auto;
+}
+
+.btn {
+  width: 200px;
+  height: 75px;
+  background-color: #777;
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.4;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.box-office .select_screen {
+  position: relative;
+}
+
+.box-office .select_screen .name {
+}
+
+.box-office .select_screen ul.screen {
+  display: flex;
+}
+
+.box-office .select_screen ul.screen li,
+.box-office .select_screen ul.screen-date,
+.box-office .select_screen ul.screen-name-box {
+  height: 50px;
+  padding: 10px;
+  border-top: 3px solid white;
+  border-right: 3px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-office .select_screen ul.screen li {
+  width: 500px;
+}
+
+.box-office .select_screen ul.screen li:last-child,
+.box-office .select_screen ul.screen-date {
+  border-right: none;
+}
+
+.box-office .select_screen ul.screen-date li {
+  padding: 0 10px;
+}
+
+.box-office .select_screen ul.screen-date li button {
+  font-size: 28px;
+  color: white;
+  background-color: black;
+}
+
+.box-office .select_screen .screen-name-box {
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  height: 400px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.box-office .select_screen .screen-name-box .screen-names {
+  width: 250px;
+}
+
+.box-office .select_screen .screen-name-box .screen-names ul.screen-name {
+}
+
+.box-office .select_screen .screen-name-box .screen-names ul.screen-name li {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.box-office
+  .select_screen
+  .screen-name-box
+  .screen-names
+  ul.screen-name
+  li
+  button {
+  color: white;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  font-size: 28px;
+}
