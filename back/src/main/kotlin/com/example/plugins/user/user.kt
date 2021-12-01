@@ -53,15 +53,15 @@ fun Route.addUser() {
 
 fun Route.checkIdAvailable() {
     get("/check/id/{id}") {
-        val flag: Bool = true
+        var flag: Int = 1
         transaction {
             db_person.select {
                 (db_person.id.eq(call.parameters["id"].toString()))
             }.forEach {
-                flag = false
+                flag = 0
             }
         }
-        if(flag == true){
+        if(flag == 1){
             call.respondText("1")
         }
         else {
